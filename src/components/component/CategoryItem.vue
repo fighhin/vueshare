@@ -52,7 +52,6 @@
 </template>
 
 <script>
-    import {projectUrl} from "../../api/api";
     import * as apis from '../../api/book'
 
     export default {
@@ -64,7 +63,6 @@
         },
         data() {
             return {
-                projectUrl: projectUrl,
                 addVisible: false,
                 editVisible: false,
                 book: new apis.Book(),
@@ -73,7 +71,6 @@
                 buildingVisible:false,
                 addBuildVisible:false,
                 editBuildVisible:false,
-
             }
         },
         methods: {

@@ -103,7 +103,6 @@
 </template>
 
 <script>
-    import {projectUrl} from "../../api/api";
     import * as apis from '../../api/book'
 
 
@@ -120,8 +119,6 @@
         },
         data() {
             return {
-
-                projectUrl: projectUrl,
                 addVisible: false,
                 editVisible: false,
                 form: {
@@ -129,10 +126,6 @@
                     build_name: ''
                 },
                 book: new apis.Book(),
-                editForm: {
-                    id: '',
-                    build_name: ''
-                },
                 borrowStatus: [
                     {id: 1, name: "可借阅"},
                     {id: 2, name: "已被预订"},

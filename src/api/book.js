@@ -10,16 +10,16 @@ export function Book(id,pId,name,author,desc,status,createTime) {
     this.createTime = createTime;
 }
 
-export function GetCategoryList(params) {
-    return getUrl("v1/book/category",params);
+export function GetCategoryList() {
+    return getUrl("v1/book/category");
 }
 
 export function GetBookOfCategoryList(params) {
-    return getUrl("v1/book/detail/"+params.id,params);
+    return getUrl("v1/book/detail/"+params.id);
 }
 
 export function GetBookContent(params) {
-    return getUrl("v1/book/"+params.id,params);
+    return getUrl("v1/book/"+params.id);
 }
 
 export function AddItem(params) {
@@ -31,7 +31,7 @@ export function UpdateItem(params) {
 }
 
 export function DeleteItem(params) {
-    return deleteUrl("v1/book/"+params,null);
+    return deleteUrl("v1/book/"+params);
 }
 
 

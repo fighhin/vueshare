@@ -20,12 +20,12 @@ export function AddUser(params) {
 }
 
 export function OneUser(params) {
-    return getUrl("v1/user/"+params.id,params);
+    return getUrl("v1/user/"+params.id);
 }
 export function UpdateUser(params) {
     return putUrl("v1/user/"+params.id,params);
 }
 
 export function DeleteUser(params) {
-    return deleteUrl("v1/user/"+params.id,params);
+    return deleteUrl("v1/user/"+params);
 }

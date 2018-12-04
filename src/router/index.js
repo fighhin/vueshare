@@ -24,6 +24,11 @@ export default new Router({
                     component: resolve => require(['../components/module/Book'], resolve),
                     meta: { title: '书籍管理' }
                 },
+                {
+                    path: '/bookContent',
+                    component: resolve => require(['../components/module/BookContent'], resolve),
+                    meta: { title: '书籍详情' }
+                },
 
             ]
         },

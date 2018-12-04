@@ -10,7 +10,7 @@
                 <el-button type="primary"  @click="addVisible = true">添加用户</el-button>
             </div>
             <el-table :data="tableData"
-                      @selection-change="handleSelectionChange" @sort-change="sortChange">
+                      @selection-change="handleSelectionChange" >
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column prop="id" label="序号">
                 </el-table-column>
@@ -28,11 +28,11 @@
                 <el-table-column label="操作" width="300px">
                     <template slot-scope="scope">
                         <el-button style="margin-left: 10px;" size="mini" type="danger"
-                                   @click="handleEdit(scope.$index, scope.row)"
+                                   @click="handleEdit(scope.row)"
                                    :disabled="scope.row.id == 1">更改用户名
                         </el-button>
                         <el-button style="margin-left: 10px;" size="mini" type="danger"
-                                   @click=" handleDelete(scope.$index, scope.row)"
+                                   @click=" handleDelete(scope.row)"
                                    :disabled="scope.row.id == 1">删除
                         </el-button>
                     </template>
@@ -43,7 +43,7 @@
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
                     :current-page="searchObject.page"
-                    :page-sizes="[100, 200, 300, 400]"
+                    :page-sizes="[2, 10, 50, 100]"
                     :page-size="searchObject.pageSize"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total="total">
@@ -139,26 +139,7 @@
             }
         },
         methods: {
-            sortChange(column) {
-                console.log(column);
-                if (column.order == "descending") {
-                    this.sort_word = "create_time DESC";
-                } else {
-                    this.sort_word = "create_time";
-                }
-                this.getData();
-            },
-            seeContent(row) {
-                this.form = Object.assign({}, row);
-                console.log("******", this.form);
-                this.detailVisible = true;
 
-            },
-            changeRole(val, id) {
-                console.log(val);
-                console.log(id);
-
-            },
             // 分页导航
             handleCurrentChange(val) {
                 this.searchObject.page = val;
@@ -171,27 +152,19 @@
             getData() {
                 apis.UserList(this.searchObject).then(res => {
                     this.tableData = res.data.list;
-                    // this.cur_page = res.msg.data.current_page;
-                    // // this.pageSize = parseInt(res.msg.user.per_page);
-                    // this.roleArr = res.msg.role;
+                    // this
                     this.total = res.total;
                 })
             },
             search() {
                 this.getData();
             },
-            formatter(row, column) {
-                return row.address;
-            },
-            handleEdit(index, row) {
+            handleEdit(row) {
                 this.editVisible = true;
                 Object.assign(this.user, row);
             },
-            handleDelete(index, row) {
-                let params = {
-                    id: row.id
-                }
-                apis.DeleteUser(params).then(res => {
+            handleDelete(row) {
+                apis.DeleteUser(row.id).then(res => {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
