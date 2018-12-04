@@ -9,7 +9,7 @@ import "babel-polyfill";
 import  store from './store'
 
 Vue.use(ElementUI, { size: 'small' });
-Vue.prototype.$axios = axios;
+// Vue.prototype.$axios = axios;
 
 
 
@@ -22,18 +22,14 @@ new Vue({
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
-    const role = localStorage.getItem('ms_username');
-    if(!role && to.path !== '/login'){
-        next('/login');
-
-    }else{
-        // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
-        if(navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor'){
-            Vue.prototype.$alert('vue-quill-editor组件不兼容IE10及以下浏览器，请使用更高版本的浏览器查看', '浏览器不兼容通知', {
-                confirmButtonText: '确定'
-            });
-        }else{
-            next();
-        }
+    let user = sessionStorage.getItem('username');
+    //跳转到登陆界面直接放行
+    if (to.path == "/login"){
+        next();
     }
+    //只有fighhin用户才能查看这个页面
+    if (to.path == "/bookManage"&& user!= "fighhin"){
+        next("/403");
+    }
+    next();
 })

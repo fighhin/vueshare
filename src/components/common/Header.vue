@@ -48,13 +48,13 @@
             return {
                 collapse: this.$store.state.collapse,
                 fullscreen: false,
-                name: 'linxin',
+                name: 'fighhin',
                 message: 2
             }
         },
         computed:{
             username(){
-                let username = localStorage.getItem('username');
+                let username = sessionStorage.getItem('username');
                 return username ? username : this.name;
             },
             changeCollapse(){

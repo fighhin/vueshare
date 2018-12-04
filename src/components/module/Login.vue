@@ -45,8 +45,9 @@
                         LoginPost(this.ruleForm).then(res=>{
                             if (res.code == 200){
                                 this.$message.success("登录成功");
-                                localStorage.setItem('ms_username',res.userName);
+                                sessionStorage.setItem('username',res.data.userName);
                                 this.$router.push('/userManage');
+
                             }else {
                                 this.$message.error("账号或密码错误,请重试");
                             }

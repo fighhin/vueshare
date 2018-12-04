@@ -4,7 +4,6 @@
         <div class="container">
             <div class="handle-box">
                 <el-input style="width:160px;margin-right: 20px;" v-model="searchObject.userName" @keyup.enter.native="getData" >
-                    <!--<el-button size="small" v-on:click="getData" slot="append" icon="search"></el-button>-->
                 </el-input>
                 <el-button size="small" type="primary" @click="getData" slot="append" icon="el-icon-search">搜索</el-button>
                 <el-button type="primary"  @click="addVisible = true">添加用户</el-button>
@@ -29,7 +28,7 @@
                     <template slot-scope="scope">
                         <el-button style="margin-left: 10px;" size="mini" type="danger"
                                    @click="handleEdit(scope.row)"
-                                   :disabled="scope.row.id == 1">更改用户名
+                                   :disabled="scope.row.id == 1">更改
                         </el-button>
                         <el-button style="margin-left: 10px;" size="mini" type="danger"
                                    @click=" handleDelete(scope.row)"
@@ -165,16 +164,14 @@
             },
             handleDelete(row) {
                 apis.DeleteUser(row.id).then(res => {
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功'
-                    })
-                    this.getData();
+                    if (res.code == 200){
+                        this.$message.success("删除成功");
+                        this.getData();
+                    }else {
+                        this.$message.error("删除失败");
+                    }
                 }).catch(e => {
-                    this.$message({
-                        type: 'error',
-                        message: e
-                    })
+                    console.log(e);
                 })
             },
             handleSelectionChange(val) {
