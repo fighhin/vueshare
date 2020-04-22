@@ -18,11 +18,5 @@
 	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
 	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
 	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
-	/*@import "../static/css/theme-green/color-green.css";   测试主题*/
+
 </style>
